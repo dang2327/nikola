@@ -65,6 +65,7 @@ class RenderTags(Task):
             'tag_path': self.site.config['TAG_PATH'],
             "tag_pages_are_indexes": self.site.config['TAG_PAGES_ARE_INDEXES'],
             "tag_pages_descriptions": self.site.config['TAG_PAGES_DESCRIPTIONS'],
+            "tag_pages_custom_templates": self.site.config['TAG_PAGES_CUSTOM_TEMPLATES'],
             'category_path': self.site.config['CATEGORY_PATH'],
             'category_prefix': self.site.config['CATEGORY_PREFIX'],
             "category_pages_are_indexes": self.site.config['CATEGORY_PAGES_ARE_INDEXES'],
@@ -104,6 +105,7 @@ class RenderTags(Task):
         def render_lists(tag, posts, is_category=True):
             post_list = sorted(posts, key=lambda a: a.date)
             post_list.reverse()
+
             for lang in kw["translations"]:
                 if kw["show_untranslated_posts"]:
                     filtered_posts = post_list
@@ -243,7 +245,17 @@ class RenderTags(Task):
         if lang in descriptions and tag in descriptions[lang]:
             context_source["description"] = descriptions[lang][tag]
         indexes_title = kw["messages"][lang]["Posts about %s"] % tag
-        template_name = "tagindex.tmpl"
+
+        # (DN) Derive template name
+        tags_with_custom_templates = kw["tag_pages_custom_templates"].split(',')
+
+        if tag in tags_with_custom_templates:
+            template_name = tag + ".tmpl"    
+        else:
+            template_name = "tagindex.tmpl"
+
+        # (DN) Log message
+        utils.LOGGER.info("Template used for tag '{0}' is '{1}'".format(tag, template_name))
 
         yield self.site.generic_index_renderer(lang, post_list, indexes_title, template_name, context_source, kw, str(self.name), page_link, page_path)
 

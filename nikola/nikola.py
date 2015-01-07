@@ -381,6 +381,7 @@ class Nikola(object):
             'TAG_PATH': 'categories',
             'TAG_PAGES_ARE_INDEXES': False,
             'TAG_PAGES_DESCRIPTIONS': {},
+            'TAG_PAGES_CUSTOM_TEMPLATES': [],
             'TAGLIST_MINIMUM_POSTS': 1,
             'TEMPLATE_FILTERS': {},
             'THEME': 'bootstrap',
