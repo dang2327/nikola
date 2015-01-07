@@ -250,7 +250,7 @@ class RenderTags(Task):
         tags_with_custom_templates = kw["tag_pages_custom_templates"].split(',')
 
         if tag in tags_with_custom_templates:
-            template_name = tag + ".tmpl"    
+            template_name = "tag-" + tag + ".tmpl"    
         else:
             template_name = "tagindex.tmpl"
 
