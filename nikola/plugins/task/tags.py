@@ -79,7 +79,7 @@ class RenderTags(Task):
             "tzinfo": self.site.tzinfo,
             "pretty_urls": self.site.config['PRETTY_URLS'],
             "strip_indexes": self.site.config['STRIP_INDEXES'],
-            "index_file": self.site.config['INDEX_FILE'],
+            "tag_index_file": self.site.config['TAG_INDEX_FILE'],
         }
 
         self.site.scan_posts()
@@ -324,14 +324,14 @@ class RenderTags(Task):
         return name
 
     def tag_index_path(self, name, lang):
-        return [_f for _f in [self.site.config['TRANSLATIONS'][lang],
+        return  [_f for _f in [self.site.config['TRANSLATIONS'][lang],
                               self.site.config['TAG_PATH'],
-                              self.site.config['INDEX_FILE']] if _f]
+                              self.site.config['TAG_INDEX_FILE']] if _f]
 
     def category_index_path(self, name, lang):
         return [_f for _f in [self.site.config['TRANSLATIONS'][lang],
                               self.site.config['CATEGORY_PATH'],
-                              self.site.config['INDEX_FILE']] if _f]
+                              self.site.config['TAG_INDEX_FILE']] if _f]
 
     def tag_path(self, name, lang):
         if self.site.config['PRETTY_URLS']:
