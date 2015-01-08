@@ -244,7 +244,7 @@ class RenderTags(Task):
         descriptions = kw["category_pages_descriptions"] if is_category else kw["tag_pages_descriptions"]
         if lang in descriptions and tag in descriptions[lang]:
             context_source["description"] = descriptions[lang][tag]
-        indexes_title = kw["messages"][lang]["Posts about %s"] % tag
+        indexes_title = kw["messages"][lang]["%s"] % tag.title()
 
         # (DN) Derive template name
         tags_with_custom_templates = kw["tag_pages_custom_templates"].split(',')

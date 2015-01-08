@@ -18,6 +18,7 @@ MESSAGES = {
     "Original site": "Original site",
     "Posted:": "Posted:",
     "Posts about %s": "Posts about %s",
+    "%s": "%s",
     "Posts for year %s": "Posts for year %s",
     "Posts for {month} {day}, {year}": "Posts for {month} {day}, {year}",
     "Posts for {month} {year}": "Posts for {month} {year}",
