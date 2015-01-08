@@ -222,10 +222,11 @@ WRITE_TAG_CLOUD = True
 # TAG_PAGES_ARE_INDEXES = False
 
 # If TAG_PAGES_ARE_INDEXES is set to True, tag pages can optionally make 
-# use of custom templates. Set the list of tags to use custom templates here
-# Example: '[tag1,tag2,tag3]'
-# Expected templates: tag-tag1.tmpl, tag-tag2.tmpl, etc.
-# TAG_PAGES_CUSTOM_TEMPLATES = ''
+# use of custom templates. Set the list of tags to use custom templates here. 
+# This is optional. Non-existent tags listed here will be ignored.
+# TAG_PAGES_CUSTOM_TEMPLATES = {
+#         "nikola": "tag-nikola.tmpl",
+# }
 
 # Allow custom name for TAG_INDEX_FILE, instead of the global INDEX_FILE
 TAG_INDEX_FILE = "tags.html"

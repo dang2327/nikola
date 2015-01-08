@@ -247,10 +247,8 @@ class RenderTags(Task):
         indexes_title = kw["messages"][lang]["%s"] % tag.title()
 
         # (DN) Derive template name
-        tags_with_custom_templates = kw["tag_pages_custom_templates"].split(',')
-
-        if tag in tags_with_custom_templates:
-            template_name = "tag-" + tag + ".tmpl"    
+        if tag in kw["tag_pages_custom_templates"]:
+            template_name = kw["tag_pages_custom_templates"][tag]
         else:
             template_name = "tagindex.tmpl"
 
