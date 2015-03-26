@@ -6,10 +6,12 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get install -y build-essential libxml2-dev libxslt-dev zlib1g-dev locales
 
-RUN echo "LANG=en_US.UTF-8" > /etc/default/locale
-RUN echo "LC_MESSAGES=POSIX" >> /etc/default/locale
-RUN echo "LANGUAGE=en" >> /etc/default/locale
-RUN locale-gen en_US.UTF-8
+RUN dpkg-reconfigure locales && \
+    locale-gen C.UTF-8 && \
+    /usr/sbin/update-locale LANG=C.UTF-8
+
+ENV LC_ALL C.UTF-8
+
 ENV LANG en_US.UTF-8
 
 RUN wget https://github.com/jgm/pandoc/releases/download/1.13.2/pandoc-1.13.2-1-amd64.deb 
