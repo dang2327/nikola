@@ -79,7 +79,6 @@ class RenderTags(Task):
             "tzinfo": self.site.tzinfo,
             "pretty_urls": self.site.config['PRETTY_URLS'],
             "strip_indexes": self.site.config['STRIP_INDEXES'],
-            "tag_index_file": self.site.config['TAG_INDEX_FILE'],
         }
 
         self.site.scan_posts()
