@@ -4,7 +4,7 @@ MAINTAINER Danh Nguyen <dnguyen@drexel.edu>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y build-essential libxml2-dev libxslt-dev zlib1g-dev locales
+RUN apt-get install -y build-essential libxml2-dev libxslt-dev zlib1g-dev locales rsync
 
 RUN dpkg-reconfigure locales && \
     locale-gen C.UTF-8 && \
